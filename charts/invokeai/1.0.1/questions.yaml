@@ -1,6 +1,6 @@
 groups:
-  - name: "Plex Configuration"
-    description: "Configure plex deployment"
+  - name: "InvokeAI Configuration"
+    description: "Configure invokeai deployment"
   - name: "Networking"
     description: "Configure networking for container"
   - name: "Storage"
@@ -29,12 +29,6 @@ portals:
     path: "/web"
 
 questions:
-  - variable: enablePlexPass
-    label: "Use PlexPass"
-    group: "Plex Configuration"
-    schema:
-      type: boolean
-      default: false
   - variable: dnsConfig
     label: "DNS Configuration"
     group: "Advanced DNS Settings"
@@ -62,14 +56,6 @@ questions:
                         type: string
                         required: true
 
-  - variable: claimToken
-    label: "Plex Claim Token"
-    group: "Plex Configuration"
-    description: "The claim token for the server to obtain a real server token. If not provided, server is will not be automatically logged in. If server is already logged in, this parameter is ignored. You can obtain a claim token to login your server to your plex account by visiting https://www.plex.tv/claim."
-    schema:
-      type: string
-      default: ""
-
   - variable: hostNetwork
     label: "Configure Host Network"
     group: "Networking"
@@ -78,8 +64,8 @@ questions:
       default: false
 
   - variable: environmentVariables
-    label: "Environment Variables for Plex"
-    group: "Plex Configuration"
+    label: "Environment Variables for InvokeAI"
+    group: "InvokeAI Configuration"
     schema:
       type: list
       default: []
@@ -99,8 +85,8 @@ questions:
                   type: string
 
   - variable: timezone
-    label: "Plex container timezone"
-    group: "Plex Configuration"
+    label: "InvokeAI container timezone"
+    group: "InvokeAI Configuration"
     schema:
       type: string
       default: "Etc/UTC"
@@ -147,7 +133,7 @@ questions:
       attrs: []
 
   - variable: appVolumeMounts
-    label: "Plex Storage"
+    label: "InvokeAI Storage"
     group: "Storage"
     schema:
       type: dict
@@ -158,17 +144,17 @@ questions:
             type: dict
             attrs:
               - variable: datasetName
-                label: "Plex Data Volume Name"
+                label: "InvokeAI Data Volume Name"
                 schema:
                   type: string
                   $ref:
                     - "normalize/ixVolume"
                   show_if: [["hostPathEnabled", "=", false]]
-                  default: "ix-plex_data"
+                  default: "ix-invokeai_data"
                   editable: false
                   hidden: true
               - variable: mountPath
-                label: "Plex Data Mount Path"
+                label: "InvokeAI Data Mount Path"
                 description: "Path where the volume will be mounted inside the pod"
                 schema:
                   type: path
@@ -176,14 +162,14 @@ questions:
                   editable: false
                   default: "/data"
               - variable: hostPathEnabled
-                label: "Enable Host Path for Plex Data Volume"
+                label: "Enable Host Path for InvokeAI Data Volume"
                 schema:
                   type: boolean
                   default: false
                   show_subquestions_if: true
                   subquestions:
                     - variable: hostPath
-                      label: "Host Path for Plex Data Volume"
+                      label: "Host Path for InvokeAI Data Volume"
                       schema:
                         type: hostpath
                         required: true
@@ -195,17 +181,17 @@ questions:
             type: dict
             attrs:
               - variable: datasetName
-                label: "Plex Config Volume Name"
+                label: "InvokeAI Config Volume Name"
                 schema:
                   type: string
                   $ref:
                     - "normalize/ixVolume"
                   show_if: [["hostPathEnabled", "=", false]]
-                  default: "ix-plex_config"
+                  default: "ix-invokeai_config"
                   editable: false
                   hidden: true
               - variable: mountPath
-                label: "Plex Config Mount Path"
+                label: "InvokeAI Config Mount Path"
                 description: "Path where the volume will be mounted inside the pod"
                 schema:
                   type: path
@@ -213,14 +199,14 @@ questions:
                   hidden: true
                   default: "/config"
               - variable: hostPathEnabled
-                label: "Enable Host Path for Plex Config Volume"
+                label: "Enable Host Path for InvokeAI Config Volume"
                 schema:
                   type: boolean
                   default: false
                   show_subquestions_if: true
                   subquestions:
                     - variable: hostPath
-                      label: "Host Path for Plex Config Volume"
+                      label: "Host Path for InvokeAI Config Volume"
                       schema:
                         type: hostpath
                         required: true
