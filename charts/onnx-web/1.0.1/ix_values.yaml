@@ -1,4 +1,4 @@
 image:
   pullPolicy: IfNotPresent
-  repository: invokeai/invokeai
-  tag: main-cuda
+  repository: ssube/onnx-web-api
+  tag: main-cuda-ubuntu

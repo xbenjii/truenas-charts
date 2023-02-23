@@ -5,8 +5,8 @@
 # The Image to use for PLEX
 
 image:
-  repository: invokeai/invokeai
-  tag: main-cuda
+  repository: ssube/onnx-web-api
+  tag: main-cuda-ubuntu
   pullPolicy: IfNotPresent
 
 #####   START  --> Official PLEX container environment variables
@@ -29,10 +29,10 @@ timezone: "Etc/UTC"
 # changeConfigDirOwnership: true
 
 # advertiseIp This variable defines the additional IPs on which the server may be be found.
-# For example: http://10.1.1.23:9090.
+# For example: http://10.1.1.23:5000.
 # This adds to the list where the server advertises that it can be found.
 # See https://hub.docker.com/r/plexinc/pms-docker/ for details
-# advertiseIp: "http://10.1.1.23:9090"
+# advertiseIp: "http://10.1.1.23:5000"
 
 # Set The user id of the plex user created inside the container.
 # See https://hub.docker.com/r/plexinc/pms-docker/ for details
@@ -52,8 +52,8 @@ timezone: "Etc/UTC"
 # upgrade strategy type (e.g. Recreate or RollingUpdate)
 updateStrategy: Recreate
 
-invokeaiServiceTCP:
-  port: 9090
+onnxServiceTCP:
+  port: 5000
 
 hostNetwork: false
 

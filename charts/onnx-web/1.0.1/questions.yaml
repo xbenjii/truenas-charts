@@ -1,6 +1,6 @@
 groups:
-  - name: "InvokeAI Configuration"
-    description: "Configure invokeai deployment"
+  - name: "onnx Configuration"
+    description: "Configure onnx deployment"
   - name: "Networking"
     description: "Configure networking for container"
   - name: "Storage"
@@ -25,7 +25,7 @@ portals:
     host:
       - "$node_ip"
     ports:
-      - "$variable-invokeaiServiceTCP.port"
+      - "$variable-onnxServiceTCP.port"
     path: "/web"
 
 questions:
@@ -64,8 +64,8 @@ questions:
       default: false
 
   - variable: environmentVariables
-    label: "Environment Variables for InvokeAI"
-    group: "InvokeAI Configuration"
+    label: "Environment Variables for onnx"
+    group: "onnx Configuration"
     schema:
       type: list
       default: []
@@ -85,8 +85,8 @@ questions:
                   type: string
 
   - variable: timezone
-    label: "InvokeAI container timezone"
-    group: "InvokeAI Configuration"
+    label: "onnx container timezone"
+    group: "onnx Configuration"
     schema:
       type: string
       default: "Etc/UTC"
@@ -108,19 +108,19 @@ questions:
           description: "Kill existing pods before creating new ones"
 
   # Port configuration
-  - variable: invokeaiServiceTCP
-    label: "Configure InvokeAI TCP Service"
+  - variable: onnxServiceTCP
+    label: "Configure onnx TCP Service"
     group: "Networking"
     schema:
       type: dict
       attrs:
         - variable: port
-          label: "Port to expose for InvokeAI"
+          label: "Port to expose for onnx"
           schema:
             type: int
             min: 9000
             max: 65535
-            default: 9090
+            default: 5000
 
   # Specify GPU configuration
   - variable: gpuConfiguration
@@ -133,7 +133,7 @@ questions:
       attrs: []
 
   - variable: appVolumeMounts
-    label: "InvokeAI Storage"
+    label: "onnx Storage"
     group: "Storage"
     schema:
       type: dict
@@ -144,17 +144,17 @@ questions:
             type: dict
             attrs:
               - variable: datasetName
-                label: "InvokeAI Data Volume Name"
+                label: "onnx Data Volume Name"
                 schema:
                   type: string
                   $ref:
                     - "normalize/ixVolume"
                   show_if: [["hostPathEnabled", "=", false]]
-                  default: "ix-invokeai_data"
+                  default: "ix-onnx_data"
                   editable: false
                   hidden: true
               - variable: mountPath
-                label: "InvokeAI Data Mount Path"
+                label: "onnx Data Mount Path"
                 description: "Path where the volume will be mounted inside the pod"
                 schema:
                   type: path
@@ -162,14 +162,14 @@ questions:
                   editable: false
                   default: "/data"
               - variable: hostPathEnabled
-                label: "Enable Host Path for InvokeAI Data Volume"
+                label: "Enable Host Path for onnx Data Volume"
                 schema:
                   type: boolean
                   default: false
                   show_subquestions_if: true
                   subquestions:
                     - variable: hostPath
-                      label: "Host Path for InvokeAI Data Volume"
+                      label: "Host Path for onnx Data Volume"
                       schema:
                         type: hostpath
                         required: true
@@ -181,17 +181,17 @@ questions:
             type: dict
             attrs:
               - variable: datasetName
-                label: "InvokeAI Config Volume Name"
+                label: "onnx Config Volume Name"
                 schema:
                   type: string
                   $ref:
                     - "normalize/ixVolume"
                   show_if: [["hostPathEnabled", "=", false]]
-                  default: "ix-invokeai_config"
+                  default: "ix-onnx_config"
                   editable: false
                   hidden: true
               - variable: mountPath
-                label: "InvokeAI Config Mount Path"
+                label: "onnx Config Mount Path"
                 description: "Path where the volume will be mounted inside the pod"
                 schema:
                   type: path
@@ -199,14 +199,14 @@ questions:
                   hidden: true
                   default: "/config"
               - variable: hostPathEnabled
-                label: "Enable Host Path for InvokeAI Config Volume"
+                label: "Enable Host Path for onnx Config Volume"
                 schema:
                   type: boolean
                   default: false
                   show_subquestions_if: true
                   subquestions:
                     - variable: hostPath
-                      label: "Host Path for InvokeAI Config Volume"
+                      label: "Host Path for onnx Config Volume"
                       schema:
                         type: hostpath
                         required: true

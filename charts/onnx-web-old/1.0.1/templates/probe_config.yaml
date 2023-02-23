@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: "invokeai-probe-check"
-data:
-  entrypoint.sh: |-
-    #!/bin/sh
-    curl -ksf http://$POD_IP:9090/identity -o /dev/null || curl -ksf https://$POD_IP:9090/identity -o /dev/null

@@ -1,4 +1,4 @@
-{{ $svc := .Values.invokeaiServiceTCP }}
+{{ $svc := .Values.onnxServiceTCP }}
 {{ $ports := list }}
 {{ $ports = mustAppend $ports (dict "name" "pms" "port" $svc.port "nodePort" $svc.port "targetPort" "pms") }}
 {{ $params := . }}

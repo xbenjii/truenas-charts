@@ -13,16 +13,16 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
           {{ include "common.resources.limitation" . | nindent 10 }}
           {{ include "common.containers.imageConfig" .Values.image | nindent 10 }}
           volumeMounts: {{ include "common.storage.configureAppVolumeMountsInContainer" .Values | nindent 12 }}
-            - name: invokeai-probe-check
-              mountPath: /bin/invokeai_probe_check.sh
+            - name: onnx-probe-check
+              mountPath: /bin/onnx_probe_check.sh
               readOnly: true
               subPath: entrypoint.sh
           ports:
-          - name: invokeai
+          - name: onnx
             protocol: TCP
-            containerPort: 9090
+            containerPort: 5000
           {{- if .Values.hostNetwork }}
-            hostPort: {{ .Values.invokeaiServiceTCP.port }}
+            hostPort: {{ .Values.onnxServiceTCP.port }}
           {{- end }}
           env:
             - name: KUBE_NAMESPACE
@@ -42,28 +42,28 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
           readinessProbe:
             httpGet:
               path: /
-              port: 9090
+              port: 5000
             failureThreshold: 5
             periodSeconds: 15
             initialDelaySeconds: 15
           livenessProbe:
             httpGet:
               path: /
-              port: 9090
+              port: 5000
             failureThreshold: 5
             periodSeconds: 15
             initialDelaySeconds: 15
           startupProbe:
             httpGet:
               path: /
-              port: 9090
+              port: 5000
             initialDelaySeconds: 5
             failureThreshold: 20
             periodSeconds: 15
             initialDelaySeconds: 15
       {{ include "common.networking.dnsConfiguration" .Values | nindent 6 }}
       volumes: {{ include "common.storage.configureAppVolumes" .Values | nindent 8 }}
-        - name: invokeai-probe-check
+        - name: onnx-probe-check
           configMap:
             defaultMode: 0700
-            name: "invokeai-probe-check"
+            name: "onnx-probe-check"

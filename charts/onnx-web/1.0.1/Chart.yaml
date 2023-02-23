@@ -4,13 +4,13 @@ dependencies:
 - name: common
   repository: file://../../../library/common/2207.0.0
   version: 2207.0.0
-description: invokeai
-home: https://github.com/invoke-ai/InvokeAI
+description: onnx
+home: https://github.com/ssube/onnx-web
 icon: https://avatars.githubusercontent.com/u/451959
 keywords:
-- invokeai
-name: invokeai
+- onnx
+name: onnx
 sources:
-- https://github.com/invoke-ai/InvokeAI
+- https://github.com/ssube/onnx-web
 upstream_version: 1.0.1
 version: 1.0.1
