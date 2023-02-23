@@ -29,10 +29,10 @@ timezone: "Etc/UTC"
 # changeConfigDirOwnership: true
 
 # advertiseIp This variable defines the additional IPs on which the server may be be found.
-# For example: http://10.1.1.23:32400.
+# For example: http://10.1.1.23:10000.
 # This adds to the list where the server advertises that it can be found.
 # See https://hub.docker.com/r/plexinc/pms-docker/ for details
-# advertiseIp: "http://10.1.1.23:32400"
+# advertiseIp: "http://10.1.1.23:10000"
 
 # Set The user id of the plex user created inside the container.
 # See https://hub.docker.com/r/plexinc/pms-docker/ for details
