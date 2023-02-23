@@ -52,9 +52,6 @@ timezone: "Etc/UTC"
 # upgrade strategy type (e.g. Recreate or RollingUpdate)
 updateStrategy: Recreate
 
-onnxServiceTCP:
-  port: 5000
-
 hostNetwork: false
 
 proxy:
@@ -70,6 +67,3 @@ appVolumeMounts:
   data:
     emptyDir: true
     mountPath: "/data"
-  config:
-    emptyDir: true
-    mountPath: "/config"

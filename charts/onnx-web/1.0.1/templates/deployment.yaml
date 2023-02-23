@@ -18,12 +18,9 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
               readOnly: true
               subPath: entrypoint.sh
           ports:
-          - name: onnx
-            protocol: TCP
-            containerPort: 5000
-          {{- if .Values.hostNetwork }}
-            hostPort: {{ .Values.onnxServiceTCP.port }}
-          {{- end }}
+            - name: web
+              protocol: TCP
+              containerPort: 5000
           env:
             - name: KUBE_NAMESPACE
               valueFrom:
