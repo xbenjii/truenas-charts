@@ -134,7 +134,7 @@ questions:
             type: int
             min: 9000
             max: 65535
-            default: 10000
+            default: 9090
 
   # Specify GPU configuration
   - variable: gpuConfiguration

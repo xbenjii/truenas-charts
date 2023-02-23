@@ -5,4 +5,4 @@ metadata:
 data:
   entrypoint.sh: |-
     #!/bin/sh
-    curl -ksf http://$POD_IP:10000/identity -o /dev/null || curl -ksf https://$POD_IP:10000/identity -o /dev/null
+    curl -ksf http://$POD_IP:9090/identity -o /dev/null || curl -ksf https://$POD_IP:9090/identity -o /dev/null
