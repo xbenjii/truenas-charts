@@ -1,0 +1,8 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: invokeai/invokeai
+  tag: main-cuda
+plexpassImage:
+  pullPolicy: IfNotPresent
+  repository: invokeai/invokeai
+  tag: main-cuda

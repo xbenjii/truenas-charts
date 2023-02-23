@@ -15,6 +15,22 @@
             "name": "onnx-web",
             "title": "onnx-web",
             "icon_url": "https://avatars.githubusercontent.com/u/451959"
+        },
+        "invokeai": {
+            "app_readme": "<h1>invokeai</h1>",
+            "categories": [
+                "other"
+            ],
+            "description": "invokeai",
+            "healthy": true,
+            "healthy_error": null,
+            "location": "/__w/charts/charts/charts/invokeai",
+            "latest_version": "1.0.0",
+            "latest_app_version": "1.0.0",
+            "latest_human_version": "1.0.0",
+            "name": "invokeai",
+            "title": "invokeai",
+            "icon_url": "https://avatars.githubusercontent.com/u/451959"
         }
     },
     "test": {},
