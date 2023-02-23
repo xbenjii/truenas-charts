@@ -1,9 +1,6 @@
-{{ $svc := .Values.plexServiceTCP }}
+{{ $svc := .Values.invokeaiServiceTCP }}
 {{ $ports := list }}
 {{ $ports = mustAppend $ports (dict "name" "pms" "port" $svc.port "nodePort" $svc.port "targetPort" "pms") }}
-{{ $ports = mustAppend $ports (dict "name" "http" "port" 80 "targetPort" "pms") }}
-{{ $ports = mustAppend $ports (dict "name" "https" "port" 443 "targetPort" "pms") }}
-{{ $ports = mustAppend $ports (dict "name" "plex-dlna" "port" 1900 "targetPort" "plex-dlna") }}
 {{ $params := . }}
 {{ $_ := set $params "commonService" (dict "ports" $ports ) }}
 {{ if .Values.hostNetwork }}

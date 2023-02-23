@@ -25,7 +25,7 @@ portals:
     host:
       - "$node_ip"
     ports:
-      - "$variable-plexServiceTCP.port"
+      - "$variable-invokeaiServiceTCP.port"
     path: "/web"
 
 questions:
@@ -122,7 +122,7 @@ questions:
           description: "Kill existing pods before creating new ones"
 
   # Port configuration
-  - variable: plexServiceTCP
+  - variable: invokeaiServiceTCP
     label: "Configure Plex TCP Service"
     group: "Networking"
     schema:

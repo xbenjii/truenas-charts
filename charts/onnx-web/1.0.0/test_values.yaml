@@ -30,7 +30,7 @@ image:
   pullPolicy: IfNotPresent
   repository: ssube/onnx-web-api
   tag: main-cuda-ubuntu
-plexServiceTCP:
+invokeaiServiceTCP:
   port: 5000
 timezone: Etc/UTC
 updateStrategy: Recreate

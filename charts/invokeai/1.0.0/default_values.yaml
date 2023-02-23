@@ -52,7 +52,7 @@ timezone: "Etc/UTC"
 # upgrade strategy type (e.g. Recreate or RollingUpdate)
 updateStrategy: Recreate
 
-plexServiceTCP:
+invokeaiServiceTCP:
   port: 5000
 
 hostNetwork: false
