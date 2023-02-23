@@ -1,5 +1,21 @@
 {
     "charts": {
+        "onnx-web": {
+            "app_readme": "<h1>onnx-web</h1>",
+            "categories": [
+                "other"
+            ],
+            "description": "onnx-web",
+            "healthy": true,
+            "healthy_error": null,
+            "location": "/__w/charts/charts/charts/onnx-web",
+            "latest_version": "1.0.0",
+            "latest_app_version": "1.0.0",
+            "latest_human_version": "1.0.0",
+            "name": "onnx-web",
+            "title": "onnx-web",
+            "icon_url": "https://avatars.githubusercontent.com/u/451959"
+        },
         "syncthing": {
             "app_readme": "<h1>Syncthing</h1>\n<p><a href=\"https://syncthing.net/\">syncthing</a> is a continuous file synchronization program. It synchronizes files between two or\nmore computers in real time, safely protected from prying eyes.</p>\n<blockquote>\n<p><strong>WARNING</strong> Do check out https://docs.syncthing.net/users/faq.html#what-things-are-synced to see what is synced.</p>\n</blockquote>",
             "categories": [

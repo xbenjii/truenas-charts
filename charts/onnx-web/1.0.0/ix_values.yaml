@@ -1,0 +1,8 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: ssube/onnx-web-api
+  tag: main-cuda-ubuntu
+plexpassImage:
+  pullPolicy: IfNotPresent
+  repository: ssube/onnx-web-api
+  tag: main-cuda-ubuntu
