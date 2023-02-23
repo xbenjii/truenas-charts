@@ -13,7 +13,7 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
           {{ include "common.resources.limitation" . | nindent 10 }}
           {{ include "common.containers.imageConfig" .Values.image | nindent 10 }}
           volumeMounts: {{ include "common.storage.configureAppVolumeMountsInContainer" .Values | nindent 12 }}
-            - name: plex-probe-check
+            - name: invokeai-probe-check
               mountPath: /bin/invokeai_probe_check.sh
               readOnly: true
               subPath: entrypoint.sh
