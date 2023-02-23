@@ -9,7 +9,7 @@ home: https://github.com/ssube/onnx-web
 icon: https://avatars.githubusercontent.com/u/451959
 keywords:
 - onnx
-name: onnx
+name: onnx-web
 sources:
 - https://github.com/ssube/onnx-web
 upstream_version: 1.0.1
