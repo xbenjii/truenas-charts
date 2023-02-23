@@ -11,48 +11,19 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
       containers:
         - name: {{ .Chart.Name }}
           {{ include "common.resources.limitation" . | nindent 10 }}
-          {{ if .Values.enablePlexPass }}
-            {{ include "common.containers.imageConfig" .Values.plexpassImage | nindent 10 }}
-          {{ else }}
-            {{ include "common.containers.imageConfig" .Values.image | nindent 10 }}
-          {{ end }}
+          {{ include "common.containers.imageConfig" .Values.image | nindent 10 }}
           volumeMounts: {{ include "common.storage.configureAppVolumeMountsInContainer" .Values | nindent 12 }}
             - name: invokeai-probe-check
-              mountPath: /bin/plex_probe_check.sh
+              mountPath: /bin/invokeai_probe_check.sh
               readOnly: true
               subPath: entrypoint.sh
-            {{ range $index, $hostPathConfiguration := .Values.extraAppVolumeMounts }}
-            - name: extrappvolume-{{ $index }}
-              mountPath: {{ $hostPathConfiguration.mountPath }}
-              {{ if $hostPathConfiguration.readOnly }}
-              readOnly: {{ $hostPathConfiguration.readOnly }}
-              {{ end }}
-            {{ end }}
           ports:
-          - name: pms
+          - name: invokeai
             protocol: TCP
             containerPort: 9090
           {{- if .Values.hostNetwork }}
             hostPort: {{ .Values.invokeaiServiceTCP.port }}
           {{- end }}
-          - name: plex-dlna
-            protocol: TCP
-            containerPort: 32469
-          - name: plex-dlna-udp
-            protocol: UDP
-            containerPort: 1900
-          - name: plex-gdm1
-            protocol: UDP
-            containerPort: 32410
-          - name: plex-gdm2
-            protocol: UDP
-            containerPort: 32412
-          - name: plex-gdm3
-            protocol: UDP
-            containerPort: 32413
-          - name: plex-gdm4
-            protocol: UDP
-            containerPort: 32414
           env:
             - name: KUBE_NAMESPACE
               valueFrom:
@@ -67,28 +38,25 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
             {{ $envList = mustAppend $envList (dict "name" "NVIDIA_DRIVER_CAPABILITIES" "value" "all") }}
             {{ end }}
             {{ $envList = mustAppend $envList (dict "name" "TZ" "value" .Values.timezone) }}
-            {{ $envList = mustAppend $envList (dict "name" "PLEX_CLAIM" "value" .Values.claimToken) }}
-            {{ $envList = mustAppend $envList (dict "name" "PMS_INTERNAL_ADDRESS" "value" (printf "http://%s:9090" (include "common.names.fullname" .))) }}
-            {{ $envList = mustAppend $envList (dict "name" "PMS_IMAGE" "value" (printf "%s:%s" .Values.image.repository .Values.image.tag))}}
             {{ include "common.containers.environmentVariables" (dict "environmentVariables" $envList) | nindent 12 }}
           readinessProbe:
             httpGet:
               path: /
-              port: 5000
+              port: 9090
             failureThreshold: 5
             periodSeconds: 15
             initialDelaySeconds: 15
           livenessProbe:
             httpGet:
               path: /
-              port: 5000
+              port: 9090
             failureThreshold: 5
             periodSeconds: 15
             initialDelaySeconds: 15
           startupProbe:
             httpGet:
               path: /
-              port: 5000
+              port: 9090
             initialDelaySeconds: 5
             failureThreshold: 20
             periodSeconds: 15
@@ -99,9 +67,3 @@ spec: {{ include "common.deployment.common_spec" . | nindent 2 }}
           configMap:
             defaultMode: 0700
             name: "invokeai-probe-check"
-        {{ range $index, $hostPathConfiguration := .Values.extraAppVolumeMounts }}
-        - name: extrappvolume-{{ $index }}
-          hostPath:
-            path: {{ $hostPathConfiguration.hostPath }}
-        {{ end }}
-

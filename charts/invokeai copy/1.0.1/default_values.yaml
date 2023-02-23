@@ -5,8 +5,8 @@
 # The Image to use for PLEX
 
 image:
-  repository: ssube/onnx-web-api
-  tag: main-cuda-ubuntu
+  repository: invokeai/invokeai
+  tag: main-cuda
   pullPolicy: IfNotPresent
 
 #####   START  --> Official PLEX container environment variables
@@ -53,7 +53,7 @@ timezone: "Etc/UTC"
 updateStrategy: Recreate
 
 invokeaiServiceTCP:
-  port: 5000
+  port: 9090
 
 hostNetwork: false
 
@@ -67,18 +67,9 @@ proxy:
 gpuConfiguration: {}
 
 appVolumeMounts:
-  transcode:
-    emptyDir: true
-    mountPath: "/transcode"
   data:
     emptyDir: true
     mountPath: "/data"
   config:
     emptyDir: true
     mountPath: "/config"
-  shared:
-    emptyDir: true
-    mountPath: "shared"
-  shared-logs:
-    emptyDir: true
-    mountPath: "/config/Library/Application Support/Plex Media Server/Logs"

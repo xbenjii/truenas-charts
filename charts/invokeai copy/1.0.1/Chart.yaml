@@ -1,16 +1,16 @@
 apiVersion: v2
-appVersion: 1.0.0
+appVersion: 1.0.1
 dependencies:
 - name: common
   repository: file://../../../library/common/2207.0.0
   version: 2207.0.0
-description: onnx-web
-home: https://github.com/ssube/onnx-web
+description: invokeai
+home: https://github.com/invoke-ai/InvokeAI
 icon: https://avatars.githubusercontent.com/u/451959
 keywords:
-- onnx
-name: onnx-web
+- invokeai
+name: invokeai
 sources:
-- https://github.com/ssube/onnx-web
-upstream_version: 1.0.0
-version: 1.0.0
+- https://github.com/invoke-ai/InvokeAI
+upstream_version: 1.0.1
+version: 1.0.1
