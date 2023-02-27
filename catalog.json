@@ -25,9 +25,9 @@
             "healthy": true,
             "healthy_error": null,
             "location": "/__w/charts/charts/charts/invokeai",
-            "latest_version": "1.0.1",
-            "latest_app_version": "1.0.1",
-            "latest_human_version": "1.0.1",
+            "latest_version": "2.3.2",
+            "latest_app_version": "2.3.2",
+            "latest_human_version": "2.3.2",
             "name": "invokeai",
             "title": "invokeai",
             "icon_url": "https://avatars.githubusercontent.com/u/451959"
