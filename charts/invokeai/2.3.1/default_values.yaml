@@ -6,7 +6,7 @@
 
 image:
   repository: invokeai/invokeai
-  tag: main-cuda
+  tag: sha-835eb14-cuda
   pullPolicy: IfNotPresent
 
 #####   START  --> Official PLEX container environment variables

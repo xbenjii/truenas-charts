@@ -1,4 +1,4 @@
 image:
   pullPolicy: IfNotPresent
   repository: invokeai/invokeai
-  tag: main-cuda
+  tag: sha-835eb14-cuda
